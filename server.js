@@ -62,6 +62,25 @@ app.use(cookieParser()); //9
 // require('./routes/api')(app);
 require('./startUps/database')  // -8
 // require('./app')
+const Student = require('./models/Student');
+
+
+// const studentInput = {
+//     name: "Namo",
+//     username: "namoski",
+//     email: "nnamosuag@yahoo.com",
+//     password: "kingdom",
+//     role: 'admin'
+// }
+
+// const student = new Student(studentInput);
+// student.save((err, document)=> {
+//     if(err){
+//         console.log(err)
+//     }else {
+//         console.log(document)
+//     }
+// })
 
 
 
