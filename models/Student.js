@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 
 const StudentSchema = mongoose.Schema({
-    
+    // _id: { type: String},
     name: {
         type: String, 
         required: true
@@ -29,9 +29,16 @@ const StudentSchema = mongoose.Schema({
           enum: ['user', 'admin'],
           required: true
     }
-
+},{
+    toJSON: {
+        transform: (doc, ret) => {
+            ret.Id = ret._id;
+            
+        }
+    }
    
-});
+}
+);
 
 //hash function for passwords
 StudentSchema.pre('save', function(next){

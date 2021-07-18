@@ -62,3 +62,15 @@ exports.loginStudent = async(req, res, next)=> {
                           student: {username, role}})                                                                     
 }
 }
+
+
+//controller to logout student -2
+exports.logoutStudent = async(req, res, next)=> {
+          
+        res.clearCookie('access_token'); // Clear the token so that the student will have to sign in again after he has logout
+        res.json({user: {username: "", role: ""},
+                          success: true});             
+      
+                                                             
+        
+}
