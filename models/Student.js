@@ -40,13 +40,13 @@ StudentSchema.pre('save', function(next){
     bcrypt.hash(this.password, 10, (err, passwordHash)=> {  //hash the password
         if(err)
         return next(err);
-        this.password = passwordHash;
+        this.password = passwordHash; //override the existing password
         next()
     })
 })
 
-StudentSchema.methods.comparePassword =(password, callback)=> {
-    bcrypt.comparePassword(password, this.password, (err, isMatch)=> {
+StudentSchema.methods.comparePassword = function(password, callback){
+    bcrypt.compare(password, this.password, (err, isMatch)=> {
         if(err)
         return callback(err);
         else {
