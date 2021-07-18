@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy; // strategy to authenticate username and password. 
-const JwtStrategy = require('passport-jwt');
+const JwtStrategy = require('passport-jwt').Strategy;
 const Student = require('../models/Student'); // require student
 require('dotenv').config();  //to check for environmental variables
 
@@ -32,14 +32,14 @@ passport.use(new JwtStrategy({
 }))
 
 //authenticating against a database when the student logs in basically
-passport.use(new LocalStrategy((username, password,done)=>{  
+passport.use(new LocalStrategy((username, password, done)=>{  
     //find the user/student
     Student.findOne({username}, (err, student)=> {
         //error handling to show something went wrong with the database
         if(err)
         return done(err);
         //if no user exist
-        if(!user)
+        if(!student)
         return done(null, false);
         student.comparePassword(password, done);  //check if password is correct
     })

@@ -59,9 +59,8 @@ app.use(cookieParser()); //9
 
 
 // Invoking All routes  -6
-// require('./routes/api')(app);
+require('./routes/api')(app);
 require('./startUps/database')  // -8
-// require('./app')
 const Student = require('./models/Student');
 
 
