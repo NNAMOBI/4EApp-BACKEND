@@ -16,6 +16,9 @@ router.post('/login', passport.authenticate('local',{session: false}), studentCo
 router.get('/logout', passport.authenticate('jwt',{session: false}), studentController.logoutStudent)// logout student
 
 
+//admin route 
+router.get('/admin', passport.authenticate('jwt',{session: false}), studentController.authenticateAdmin)//route to check for admin or user role
+router.get('/auth', passport.authenticate('jwt',{session: false}), studentController.keepAlive)
 
 
 
