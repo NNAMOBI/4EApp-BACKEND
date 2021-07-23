@@ -1,4 +1,4 @@
-// module for single responsibilty
+// module for single responsibilty to sign the json web token for cookies in the browser
 const JWT = require('jsonwebtoken');
 
 
