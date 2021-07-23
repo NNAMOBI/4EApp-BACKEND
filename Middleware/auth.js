@@ -8,7 +8,7 @@ require('dotenv').config();  //to check for environmental variables
 const cookieExtractor = req => {
  let token;
  if(req && req.cookies){
-     token = req.cookies["accessToken"];
+     token = req.cookies['access_token'];
  }
  return token;
 }
@@ -18,8 +18,8 @@ const cookieExtractor = req => {
 passport.use(new JwtStrategy({
     jwtFromRequest: cookieExtractor,
     secretOrKey: process.env.SESSION_SECRET // verify the token
-}, (studentPayload, done)=> {
-    Student.findById({id: studentPayload.sub}, (err, student)=> {
+}, (payload, done)=> {
+    Student.findById({_id: payload.sub}, (err, student)=> {
         //check for error
         if(err)
             return done(err, false);      
