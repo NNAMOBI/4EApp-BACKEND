@@ -28,7 +28,9 @@ const { required } = require('@hapi/joi');
 const express = require('express');
 const app = express();
 const http = require('http')
-const {port} = require("./config");  // -3
+require('dotenv').config();  //to check for environmental variables
+// const {port} = require("./config");  // -3
+const port = process.env.PORT
 const createError = require('http-errors');  // -4
 // require('express-async-errors');
 const cors = require('cors');  //-7
